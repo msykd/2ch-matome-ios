@@ -1,0 +1,3 @@
+rootProject.name = 'matome2ch'
+
+include ':app'
