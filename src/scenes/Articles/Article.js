@@ -6,7 +6,6 @@ export default class Article extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props);
   }
 
   openArticle() {
@@ -19,7 +18,8 @@ export default class Article extends Component {
           onPress={this.openArticle.bind(this)}
         >
           <View style={styles.wrapper}>
-          <Text>{this.props.data.title}</Text>
+            <Text style={{ fontSize: 11, marginBottom: 5}}>{this.props.data.date}</Text>
+            <Text style={{ fontWeight: 'bold'}}>{this.props.data.title}</Text>
           </View>
         </TouchableOpacity>
     );
@@ -31,7 +31,6 @@ const styles = {
   wrapper: {
     padding: 20,
     flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: 'column',
   }
 };
