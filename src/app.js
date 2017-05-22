@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, WebView } from 'react-native';
+import { View, Text } from 'react-native';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Scene, Router } from 'react-native-router-flux';
@@ -8,6 +8,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 import reducers from './reducers';
 import Articles from './scenes/Articles';
+import ArticleWebView from './components/ArticleWebView';
 
 const saga = createSagaMiddleware();
 
@@ -36,24 +37,5 @@ class App extends Component {
     );
   }
 };
-
-
-class ArticleWebView extends Component {
-
-  constructor(props) {
-    super(props);
-    console.log(props);
-  }
-
-  render () {
-    return (
-      <WebView
-        source={{uri: this.props.url}}
-        style={{marginTop: 62}}
-      />
-    );
-  }
-
-}
 
 export default App;

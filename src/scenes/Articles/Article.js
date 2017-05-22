@@ -13,13 +13,16 @@ export default class Article extends Component {
   }
 
   render () {
+
+    const title = this.props.data.title.substr(0, 40);
+
     return (
         <TouchableOpacity
           onPress={this.openArticle.bind(this)}
         >
           <View style={styles.wrapper}>
-            <Text style={{ fontSize: 11, marginBottom: 5}}>{this.props.data.date}</Text>
-            <Text style={{ fontWeight: 'bold'}}>{this.props.data.title}</Text>
+            <Text style={{ fontSize: 12, marginBottom: 5, color: '#CCC'}}>{this.props.data.date}</Text>
+            <Text style={{ fontSize: 17, fontWeight: 'bold'}}>{title}</Text>
           </View>
         </TouchableOpacity>
     );
@@ -29,8 +32,10 @@ export default class Article extends Component {
 
 const styles = {
   wrapper: {
-    padding: 20,
+    padding: 10,
     flex: 1,
     flexDirection: 'column',
+    justifyContent: 'flex-start',
+    height: 80
   }
 };

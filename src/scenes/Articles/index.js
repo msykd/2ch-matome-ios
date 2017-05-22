@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ListView, FlatList, RefreshControl } from 'react-native';
+import { View, Text, ListView, FlatList, RefreshControl, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import Article from './Article';
 import * as actions from '../../actions';
@@ -23,8 +23,8 @@ class Articles extends Component {
         <FlatList
           data={this.props.articles}
           keyExtractor={this._keyExtractor}
-          renderItem={({item}) => <Article data={item} />}
-          ItemSeparatorComponent={(sectionId, rowId) => <View key={rowId} style={{ flex: 1, height: 0.5, backgroundColor: "#000" }}/>}
+          renderItem={({item, index}) => <Article data={item} index={index} />}
+          ItemSeparatorComponent={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
           refreshControl={
             <RefreshControl
               refreshing={this.props.isLoading}
@@ -37,6 +37,14 @@ class Articles extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  separator: {
+    flex: 1,
+    height: 0.5,
+    backgroundColor: '#BBB'
+  }
+});
 
 const mapStateToProps = state => {
   return {articles: state.articles.toJS().list, isLoading: state.articles.toJS().isLoading};
